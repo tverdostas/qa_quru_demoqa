@@ -12,7 +12,6 @@ public class FormTest {
     @BeforeAll
     static void beforeAll(){
         Configuration.baseUrl = "https://demoqa.com";
-    //    Configuration.holdBrowserOpen = true;
     }
 
     @Test
