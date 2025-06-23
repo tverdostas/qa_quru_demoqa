@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -10,8 +11,9 @@ import static com.codeborne.selenide.Selenide.*;
 public class FormTest {
 
     @BeforeAll
-    static void beforeAll(){
+    static void browserConfigurations(){
         Configuration.baseUrl = "https://demoqa.com";
+        Configuration.pageLoadStrategy = "eager";
     }
 
     @Test
@@ -43,7 +45,15 @@ public class FormTest {
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
 
-        $(".table-responsive").shouldHave(text("test1"),
-                text("8963598710"));
+        $(".table-responsive").shouldHave(Condition.text("Student Name test1 test1"));
+        $(".table-responsive").shouldHave(Condition.text("Student Email test1@local.local"));
+        $(".table-responsive").shouldHave(Condition.text("Gender Female"));
+        $(".table-responsive").shouldHave(Condition.text("Mobile 8963598710"));
+        $(".table-responsive").shouldHave(Condition.text("Date of Birth 30 July,1990"));
+        $(".table-responsive").shouldHave(Condition.text("Subjects Social Studies"));
+        $(".table-responsive").shouldHave(Condition.text("Hobbies Music"));
+        $(".table-responsive").shouldHave(Condition.text("Picture test_summer_copy.jpg"));
+        $(".table-responsive").shouldHave(Condition.text("Address test_address"));
+        $(".table-responsive").shouldHave(Condition.text("State and City NCR Gurgaon"));
     }
 }
